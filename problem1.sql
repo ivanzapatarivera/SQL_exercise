@@ -1,12 +1,16 @@
 Select @@autocommit;
-Set @@autocommit;
+Set @@autocommit = 0;
 Select @@SQL_SAFE_UPDATES;
 Set @@SQL_SAFE_UPDATES = 0;
+
+DROP SCHEMA IF EXISTS da_bootcamp_zapatarivera; 
+CREATE SCHEMA IF NOT EXISTS da_bootcamp_zapatarivera;
+Use da_bootcamp_zapatarivera;
 
 CREATE TABLE IF NOT EXISTS animals (
     ID INT Auto_Increment Not Null,
     Animal_Name VARCHAR(50) Not Null,
-    Animal_Age INT(3) Not Null,
+    Animal_Age INT Not Null,
     Primary Key (ID)
 );
 
