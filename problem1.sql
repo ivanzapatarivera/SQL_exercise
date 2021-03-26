@@ -9,3 +9,11 @@ CREATE TABLE IF NOT EXISTS animals (
     Animal_Age INT(3) Not Null,
     Primary Key (ID)
 );
+
+ALTER TABLE animals
+ADD COLUMN 
+    Animal_Class VARCHAR(50) Not Null,
+DROP COLUMN
+    Animal_Name,
+DROP COLUMN
+    Animal_Age;
