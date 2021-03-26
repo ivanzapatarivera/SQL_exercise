@@ -23,5 +23,5 @@ SET SQL_SAFE_UPDATES = 0;
 	DELETE FROM item_details
 		WHERE item_price >= 2;
 SET SQL_SAFE_UPDATES = 1;
-    
--- Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
+
+SELECT * FROM item_details;
