@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS animals (
     ID INT Auto_Increment Not Null,
     Animal_Name VARCHAR(50) Not Null,
     Animal_Age INT Not Null,
-    Primary Key (ID)
+    Primary Key (ID) 
 );
 
 ALTER TABLE animals
