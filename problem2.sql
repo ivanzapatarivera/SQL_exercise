@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS item_details;
 
 CREATE TABLE item_details (
     item_id VARCHAR(10) NOT NULL,
-    item_price FLOAT NOT NULL, 
+    item_price DECIMAL(9, 2) NOT NULL, 
     item_description VARCHAR(50) NOT NULL,
     Primary Key (item_id)
 );
@@ -17,3 +17,11 @@ VALUES
 ;
 
 SELECT * FROM item_details;
+-- DROP TABLE item_details;
+
+SET SQL_SAFE_UPDATES = 0;
+	DELETE FROM item_details
+		WHERE item_price >= 2;
+SET SQL_SAFE_UPDATES = 1;
+    
+-- Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
