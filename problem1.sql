@@ -20,3 +20,5 @@ DROP COLUMN
 
 ALTER TABLE animals
 RENAME zoo_animals;
+
+SELECT * FROM zoo_animals;
