@@ -17,3 +17,6 @@ DROP COLUMN
     Animal_Name,
 DROP COLUMN
     Animal_Age;
+
+ALTER TABLE animals
+RENAME zoo_animals;
