@@ -16,12 +16,17 @@ VALUES
     ('itm005',3,'Broccoli (head)')
 ;
 
-SELECT * FROM item_details;
+-- SELECT * FROM item_details;
 -- DROP TABLE item_details;
 
+BEGIN;
+
 SET SQL_SAFE_UPDATES = 0;
-	DELETE FROM item_details
-		WHERE item_price >= 2;
+DELETE FROM item_details
+	WHERE item_price >= 2;
 SET SQL_SAFE_UPDATES = 1;
+
+ROLLBACK;
+COMMIT;
 
 SELECT * FROM item_details;
