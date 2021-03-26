@@ -22,3 +22,6 @@ ALTER TABLE animals
 RENAME zoo_animals;
 
 SELECT * FROM zoo_animals;
+
+DROP TABLE IF EXISTS animals;
+DROP TABLE IF EXISTS zoo_animals;
