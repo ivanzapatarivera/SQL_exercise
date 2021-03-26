@@ -7,8 +7,6 @@ CREATE TABLE item_details (
     Primary Key (item_id)
 );
 
-DROP TABLE item_details;
-
 INSERT INTO item_details
 VALUES
     ('itm001',2,'Avocado (ind)'),
