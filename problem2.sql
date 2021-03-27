@@ -30,3 +30,5 @@ UPDATE item_details SET item_price = 6
 UPDATE item_details SET item_price = item_price * 2
     WHERE item_description LIKE '%Avocado%'
 	OR item_description LIKE '%Broccoli%';
+
+SELECT * FROM item_details;
