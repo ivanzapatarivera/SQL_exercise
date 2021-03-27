@@ -7,8 +7,8 @@ CREATE TABLE item_details (
     Primary Key (item_id)
 );
 
-INSERT INTO item_details
-VALUES
+TRUNCATE TABLE item_details;
+INSERT INTO item_details VALUES
     ('itm001',2,'Avocado (ind)'),
     ('itm002',60,'Apple Bag'),
     ('itm003',0.5,'Lemons (ind)'),
@@ -26,9 +26,9 @@ SELECT * FROM item_details;
 
 UPDATE item_details SET item_price = 6
     WHERE item_description LIKE '%Apple%';
-    
+
 UPDATE item_details SET item_price = item_price * 2
     WHERE item_description LIKE '%Avocado%'
-	OR item_description LIKE '%Broccoli%';
+    OR item_description LIKE '%Broccoli%';
 
 SELECT * FROM item_details;
