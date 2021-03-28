@@ -864,5 +864,6 @@ SELECT COUNT(*) FROM sales_orders AS so
 SELECT order_no, order_date, quantity FROM sales_orders AS so
 	LEFT JOIN item_details AS id ON so.item_id = id.item_id
     WHERE MONTH(order_date) = 8 
+    ORDER BY so.quantity DESC
     LIMIT 0, 10;
     
