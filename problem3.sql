@@ -9,10 +9,6 @@ CREATE TABLE sales_orders (
     PRIMARY KEY (record_id)
 );
 
--- ALTER TABLE sales_orders
--- ADD CONSTRAINT item_id 
--- FOREIGN KEY (item_id) REFERENCES item_details(item_id);
-
 TRUNCATE TABLE sales_orders;
 INSERT INTO sales_orders (order_no, order_date, item_id, quantity) VALUES
 (1001,'2019-07-01','itm003',37),
@@ -847,3 +843,24 @@ INSERT INTO sales_orders (order_no, order_date, item_id, quantity) VALUES
 (1415,'2019-12-30','itm005',32),
 (1416,'2019-12-30','itm001',23)
 ;
+
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE sales_orders
+ADD CONSTRAINT item_id 
+FOREIGN KEY (item_id) REFERENCES item_details(item_id);
+
+-- 3. What is the total number of records in sales_orders? RESULT 831
+SELECT COUNT(*) FROM sales_orders;
+
+-- 4. What is the total number of records of sales_orders INNER JOIN item_details? LEFT JOIN?
+-- RESULT (INNER JOIN) : 828
+-- RESULT (LEFT JOIN) : 831
+SELECT COUNT(*) FROM sales_orders AS so
+	INNER JOIN item_details AS id ON so.item_id = id.item_id;
+
+SELECT COUNT(*) FROM sales_orders AS so
+	LEFT JOIN item_details AS id ON so.item_id = id.item_id;
+
+SELECT order_no, order_date, quantity FROM sales_orders AS so
+	LEFT JOIN item_details AS id ON so.item_id = id.item_id
+    WHERE 
