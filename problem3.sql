@@ -867,3 +867,6 @@ SELECT order_no, order_date, quantity FROM sales_orders AS so
     ORDER BY so.quantity DESC
     LIMIT 0, 10;
     
+SELECT order_no, order_date, quantity FROM sales_orders AS so
+	LEFT JOIN item_details AS id ON so.item_id = id.item_id
+    WHERE so.quantity > 10;
