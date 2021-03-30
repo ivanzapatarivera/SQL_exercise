@@ -62,6 +62,7 @@ SELECT order_no, order_date, quantity FROM sales_orders AS orders
     ON orders.item_id = details.item_id
     HAVING orders.quantity > 10;
 
+-- 7. Create stored procedure "total_sales_on_date" that returns total sales (in $) given a date.
 DELIMITER //
 CREATE PROCEDURE total_sales_on_date() 
 BEGIN
@@ -74,5 +75,3 @@ BEGIN
 END //
 DELIMITER ;
 CALL total_sales_on_date;
-DROP PROCEDURE total_sales_on_date;
-SELECT DISTINCT(order_date) FROM sales_orders;
