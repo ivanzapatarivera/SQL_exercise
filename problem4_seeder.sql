@@ -1,7 +1,6 @@
+use da_bootcamp_zapatarivera;
 INSERT INTO date_dim (TheDate) VALUES 
 ('2019-07-01'),
-('2019-07-02'),
-('2019-07-03'),
 ('2019-07-02'),
 ('2019-07-03'),
 ('2019-07-04'),

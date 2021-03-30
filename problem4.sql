@@ -9,3 +9,38 @@
 -- 	Created mask with this formula in cell C1: =TEXT(B1,"('YYYY-MM-DD'),")
 -- 	Autofilled formula in C2 down to cells C2 to C182.
 
+use da_bootcamp_zapatarivera;
+
+DROP TABLE IF EXISTS date_dim;
+
+CREATE TABLE IF NOT EXISTS date_dim (
+	TheDate date PRIMARY KEY,
+    TheYear int,
+    TheMonth int,
+    TheMonthName varchar(9), #January February March etc
+    TheDay int,
+    TheDayOfWeek int,
+    TheDayOfWeekName varchar(9), #Sunday Monday Tuesday etc
+    YYYYQQ char(6) #2019Q3, 2019Q4
+);
+
+UPDATE date_dim 
+set 
+	TheYear = YEAR(TheDate),
+    TheMonth = MONTH(TheDate),
+    TheMonthName = MONTHNAME(TheDate),
+    TheDay = DAY(TheDate),
+    TheDayOfWeek = DAYOFWEEK(TheDate),
+    TheDayOfWeekName = DAYNAME(TheDate),
+    YYYYQQ = CONCAT(TheYear, 'Q', quarter(TheDate))
+;
+
+SELECT * FROM date_dim;
+
+-- INSERT INTO data_dim (The Date VALUES
+-- ('2019-07-01'),
+-- ('2019-07-02'),
+-- ('2019-07-03'),
+-- ...
+-- ('2019-12-31')
+-- Query is avaliable in file 'problem_seeder.sql'
