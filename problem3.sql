@@ -47,11 +47,14 @@ SELECT COUNT(*) FROM sales_orders AS so
 	LEFT JOIN item_details AS id 
     ON so.item_id = id.item_id;
 
-SELECT order_no, order_date, quantity FROM sales_orders AS so
-	LEFT JOIN item_details AS id ON so.item_id = id.item_id
+-- 5. Return the order_no, order_date, and the order_total for the top 10 orders in August in descending order.
+SELECT order_no, order_date, (quantity * item_price) AS order_total FROM sales_orders AS orders
+	LEFT JOIN item_details AS details 
+    ON orders.item_id = details.item_id
     WHERE MONTH(order_date) = 8 
-    ORDER BY so.quantity DESC
-    LIMIT 0, 10;
+    ORDER BY order_total DESC
+    LIMIT 10
+    ;
     
 SELECT order_no, order_date, quantity FROM sales_orders AS so
 	LEFT JOIN item_details AS id ON so.item_id = id.item_id
