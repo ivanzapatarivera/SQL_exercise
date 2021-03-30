@@ -7,7 +7,7 @@
 -- 		=IF(B1 + 1 < $A$2, B1 + 1, "")
 -- 		=TEXT(B1,"('YYYY-MM-DD'),")
 
--- STEPS
+-- 	STEPS
 -- 		Entered dates 2019-07-03 in cell A1 and 2019-12-31 in cell A2.
 -- 		Entered =A1 + 1 in cell B1.
 -- 		Entered =IF(B1 + 1 < $A$2, B1 + 1, "") in cell B2.
@@ -61,23 +61,25 @@ SELECT 	item_description AS 'Item Description',
 		TheDayOfWeekName AS 'Day of Week', 
         CONCAT('$ ', SUM(quantity * item_price)) AS 'Sales Total'
 	FROM item_details
-    LEFT JOIN sales_orders
+    RIGHT JOIN sales_orders
 		ON item_details.item_id = sales_orders.item_id
-    LEFT JOIN date_dim 
+    RIGHT JOIN date_dim 
 		ON sales_orders.order_date = date_dim.TheDate
+        WHERE item_description <> ''
     GROUP BY item_description, TheDayOfWeekName
     ORDER BY item_description, TheDayOfWeek
 	;   
 
 -- 4. Total Quantity Sold by Product by Quarter. Columns should be: Item_ID, Quarter YYYYMM, Total Quantity
-SELECT 	item_details.item_id AS 'Item_ID', 
+SELECT 	sales_orders.item_id AS 'Item_ID', 
 		YYYYQQ AS 'Quarter YYYYMM', 
         SUM(quantity) AS 'Total Quantity'
 	FROM item_details
-    LEFT JOIN sales_orders
+    RIGHT JOIN sales_orders
 		ON item_details.item_id = sales_orders.item_id
-	LEFT JOIN date_dim
+	RIGHT JOIN date_dim
 		ON sales_orders.order_date = date_dim.TheDate
+        WHERE sales_orders.item_id <> ''
 	GROUP BY item_id, YYYYQQ
     ORDER BY item_id, YYYYQQ
     ;

@@ -17,7 +17,6 @@ CREATE TABLE sales_orders (
 );
 
 -- 2. Load sales_orders with the raw data provided in pg2. You may write and leave the entire INSERT statement there.
--- For answer to Step 2, please refer to file 'problem3_seeder.sql'
 -- Insert statement is as follows: 
 -- TRUNCATE TABLE sales_orders;
 -- INSERT INTO sales_orders (order_no, order_date, item_id, quantity) VALUES 
@@ -57,7 +56,7 @@ SELECT order_no, order_date, (quantity * item_price) AS order_total FROM sales_o
     ;
 
 -- 6. Return the order_no, order_date, and the total quantity for orders HAVING a total quantity greater than 10.
-SELECT order_no, order_date, quantity FROM sales_orders AS orders
+SELECT order_no, order_date, quantity AS 'total quantity' FROM sales_orders AS orders
 	JOIN item_details AS details
     ON orders.item_id = details.item_id
     HAVING orders.quantity > 10;
