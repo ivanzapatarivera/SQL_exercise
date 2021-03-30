@@ -23,22 +23,29 @@ CREATE TABLE sales_orders (
 -- INSERT INTO sales_orders (order_no, order_date, item_id, quantity) VALUES 
 -- Values in file 'problem3_seeder.sql'
 -- ;
-SET FOREIGN_KEY_CHECKS=0;
+
+-- Setting foreign_key_checks to false and setting foreign key
+SET FOREIGN_KEY_CHECKS = 0;
 ALTER TABLE sales_orders
 ADD CONSTRAINT item_id 
-FOREIGN KEY (item_id) REFERENCES item_details(item_id);
+FOREIGN KEY (item_id) 
+REFERENCES item_details(item_id);
+SET FOREIGN_KEY_CHECKS = 1;
 
--- 3. What is the total number of records in sales_orders? RESULT 831
+-- 3. What is the total number of records in sales_orders? 
+-- RESULT: 831
 SELECT COUNT(*) FROM sales_orders;
 
 -- 4. What is the total number of records of sales_orders INNER JOIN item_details? LEFT JOIN?
 -- RESULT (INNER JOIN) : 828
 -- RESULT (LEFT JOIN) : 831
 SELECT COUNT(*) FROM sales_orders AS so
-	INNER JOIN item_details AS id ON so.item_id = id.item_id;
+	INNER JOIN item_details AS id 
+    ON so.item_id = id.item_id;
 
 SELECT COUNT(*) FROM sales_orders AS so
-	LEFT JOIN item_details AS id ON so.item_id = id.item_id;
+	LEFT JOIN item_details AS id 
+    ON so.item_id = id.item_id;
 
 SELECT order_no, order_date, quantity FROM sales_orders AS so
 	LEFT JOIN item_details AS id ON so.item_id = id.item_id
