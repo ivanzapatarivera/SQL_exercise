@@ -8,3 +8,4 @@
 -- 	Autofilled formula in B2 down to cells B2 to B182.
 -- 	Created mask with this formula in cell C1: =TEXT(B1,"('YYYY-MM-DD'),")
 -- 	Autofilled formula in C2 down to cells C2 to C182.
+
