@@ -42,4 +42,13 @@ UPDATE item_details SET item_price = item_price * 2
     WHERE item_description LIKE '%Avocado%'
     OR item_description LIKE '%Broccoli%';
 
+-- 8. SELECT * to confirm the records are correct. COMMIT. Table item_details is ready for use in PROBLEM 3.
 SELECT * FROM item_details;
+
+-- 9. SUGGESTION: To make debugging PROBLEM 3 easier, you may wish to make note of item_details record values as of Step 8, then TRUNCATE item_details and INSERT records to match those recorded values to have a reliable starting point.
+# item_id, item_price, item_description
+-- ('itm001', '4.00', 'Avocado (ind)')
+-- ('itm002', '6.00', 'Apple Bag')
+-- ('itm003', '0.50', 'Lemons (ind)')
+-- ('itm004', '2.00', 'Banana (lb)')
+-- ('itm005', '6.00', 'Broccoli (head)')
