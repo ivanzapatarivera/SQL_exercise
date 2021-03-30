@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS sales_orders;
+USE da_bootcamp_zapatarivera;
 
 CREATE TABLE sales_orders (
     record_id BIGINT AUTO_INCREMENT NOT NULL,
@@ -870,3 +871,18 @@ SELECT order_no, order_date, quantity FROM sales_orders AS so
 SELECT order_no, order_date, quantity FROM sales_orders AS so
 	LEFT JOIN item_details AS id ON so.item_id = id.item_id
     WHERE so.quantity > 10;
+
+DELIMITER //
+CREATE PROCEDURE total_sales_on_date() 
+BEGIN
+	SELECT order_date, CONCAT('$ ', SUM(quantity * item_price)) AS total_sales_on_date
+	FROM sales_orders AS orders
+	JOIN item_details AS details
+	ON orders.item_id = details.item_id
+	GROUP BY order_date
+    ;
+END //
+DELIMITER ;
+CALL total_sales_on_date;
+DROP PROCEDURE total_sales_on_date;
+SELECT DISTINCT(order_date) FROM sales_orders;
