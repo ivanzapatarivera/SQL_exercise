@@ -55,10 +55,12 @@ SELECT order_no, order_date, (quantity * item_price) AS order_total FROM sales_o
     ORDER BY order_total DESC
     LIMIT 10
     ;
-    
-SELECT order_no, order_date, quantity FROM sales_orders AS so
-	LEFT JOIN item_details AS id ON so.item_id = id.item_id
-    WHERE so.quantity > 10;
+
+-- 6. Return the order_no, order_date, and the total quantity for orders HAVING a total quantity greater than 10.
+SELECT order_no, order_date, quantity FROM sales_orders AS orders
+	JOIN item_details AS details
+    ON orders.item_id = details.item_id
+    HAVING orders.quantity > 10;
 
 DELIMITER //
 CREATE PROCEDURE total_sales_on_date() 
