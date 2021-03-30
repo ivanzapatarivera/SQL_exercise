@@ -1,6 +1,6 @@
--- 	   1. You must create a list in Excel of all dates from 7/1/2019 to 12/31/2019, 
---     in order to create the INSERT statement. Comment below with a description of what EXCEL
---     functions you used to create the data, copy-pasting the entire functions including the = sign
+-- 1. You must create a list in Excel of all dates from 7/1/2019 to 12/31/2019, 
+-- in order to create the INSERT statement. Comment below with a description of what EXCEL
+-- functions you used to create the data, copy-pasting the entire functions including the = sign
 
 -- 	Entered dates 2019-07-03 in cell A1 and 2019-12-31 in cell A2.
 -- 	Entered this formula in cell B1: =A1 + 1
@@ -44,3 +44,18 @@ SELECT * FROM date_dim;
 -- ...
 -- ('2019-12-31')
 -- Query is avaliable in file 'problem_seeder.sql'
+
+-- 	3. Sales ($) for each item_description broken down by day of the week.
+-- 	Columns should be: Item Description, Day of Week, Sales Total
+SELECT item_description, TheDayOfWeekName, CONCAT('$ ', SUM(quantity * item_price)) AS total
+	FROM item_details
+    LEFT JOIN sales_orders
+    ON item_details.item_id = sales_orders.item_id
+    LEFT JOIN date_dim 
+    ON sales_orders.order_date = date_dim.TheDate
+    GROUP BY item_description, TheDayOfWeekName
+    ORDER BY item_description, TheDayOfWeek
+	;   
+
+    
+SELECT DISTINCT(TheDayOfWeekName) FROM date_dim;

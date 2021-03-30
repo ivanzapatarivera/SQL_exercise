@@ -66,7 +66,7 @@ SELECT order_no, order_date, quantity FROM sales_orders AS orders
 DELIMITER //
 CREATE PROCEDURE total_sales_on_date() 
 BEGIN
-	SELECT order_date, CONCAT('$ ', quantity * item_price) AS total_sales_on_date
+	SELECT order_date, CONCAT('$ ', SUM(quantity * item_price)) AS total_sales_on_date
 	FROM sales_orders AS orders
 	JOIN item_details AS details
 	ON orders.item_id = details.item_id
